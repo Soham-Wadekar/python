@@ -4,7 +4,7 @@
 f = open('intermediates/file handling/files/test.txt')
 print(f"The variable f is of type {type(f)}")
 
-# METHOD 2
+# METHOD 2 (Closes the file afterwards without need to close it explicitly)
 with open('intermediates/file handling/files/test.txt','r') as f:
     print(f"The variable f is of type {type(f)}")
 
