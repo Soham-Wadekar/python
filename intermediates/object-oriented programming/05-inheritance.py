@@ -17,7 +17,7 @@ class Cat(Animal):
         super().__init__(name, age, animal)
         self.color = color
 
-    def speak(self):            # POLYMORPHISM
+    def speak(self):            
         print("'Meow'")
 
     def about_me(self):
