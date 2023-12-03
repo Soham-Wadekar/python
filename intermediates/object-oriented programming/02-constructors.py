@@ -5,11 +5,11 @@
 class Operations:
 
     def __init__(self, x, y):
-        self.x = x
+        self.x = x                  # Encapsulated variable
         self.y = y
 
     def add(self):
-        return self.x + self.y
+        return self.x + self.y      # Encapsulated method
     
     def subtract(self):
         return self.x - self.y
