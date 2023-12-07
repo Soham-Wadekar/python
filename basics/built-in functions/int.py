@@ -3,5 +3,5 @@
 print(int(3.14))
 print(int("123"))
 print(int(True))
-print(int("0b1000",base=2))
-print(int("0xff",base=16))
+print(int("0b1000", base=2))
+print(int("0xff", base=16))

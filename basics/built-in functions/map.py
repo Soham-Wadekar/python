@@ -2,8 +2,8 @@
 
 import numpy as np
 
-num = [1,2,3,4,5,6]
-print(list(map(lambda x: x**2,num)))
+num = [1, 2, 3, 4, 5, 6]
+print(list(map(lambda x: x**2, num)))
 
-code = 'secret'
-print(list(map(lambda char: chr(ord(char)+np.random.randint(-10,10)),code)))
+code = "secret"
+print(list(map(lambda char: chr(ord(char) + np.random.randint(-10, 10)), code)))

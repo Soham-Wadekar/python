@@ -3,7 +3,7 @@
 dividend = 16
 divisor = 3
 
-quotient, remainder = divmod(dividend,divisor)
+quotient, remainder = divmod(dividend, divisor)
 
 print(f"Dividend: {dividend}, Divisor: {divisor}")
 print(f"Quotient: {quotient}, Remainder: {remainder}")

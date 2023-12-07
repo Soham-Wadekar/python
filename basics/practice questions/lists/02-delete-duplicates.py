@@ -1,6 +1,6 @@
 # 2. Implement a program to remove duplicate elements from a list.
 
-lst = [23,5,23,5,3,3,6,8,867,92,34,54,92,92]
+lst = [23, 5, 23, 5, 3, 3, 6, 8, 867, 92, 34, 54, 92, 92]
 uniq_list = []
 
 for num in lst:
@@ -12,7 +12,7 @@ print(f"List without duplicates: {uniq_list}")
 
 # Method 2
 
-lst = [23,5,23,5,3,3,6,8,867,92,34,54,92,92]
+lst = [23, 5, 23, 5, 3, 3, 6, 8, 867, 92, 34, 54, 92, 92]
 uniq_list = list(set(lst))
 
 print(f"Original List: {lst}")

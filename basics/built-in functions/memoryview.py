@@ -3,6 +3,6 @@
 x = b"abcdef"
 mem = memoryview(x)
 
-print(list(mem))            # Returns ASCII value of each byte
+print(list(mem))  # Returns ASCII value of each byte
 
 print(bytes(mem[1:4]))

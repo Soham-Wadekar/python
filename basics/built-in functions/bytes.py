@@ -3,4 +3,4 @@
 x = b"abcdef*"
 
 for i in x:
-    print(i)        # Outputs ASCII value of every byte
+    print(i)  # Outputs ASCII value of every byte

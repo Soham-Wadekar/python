@@ -1,22 +1,22 @@
 # Duck typing is a concept related to dynamic typing, where the type or the class of an object is less important than the methods it defines.
 
-class Cat:
 
+class Cat:
     def sound(self):
         print("Meow!")
 
-class Dog:
 
+class Dog:
     def sound(self):
         print("Bark!")
 
-class Owl:
 
+class Owl:
     def sound(self):
         print("Hoot!")
 
-class AnimalSound:
 
+class AnimalSound:
     def speak(self, animal):
         animal.sound()
 

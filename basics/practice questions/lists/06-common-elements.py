@@ -13,4 +13,6 @@ print(f"The common elements from both the lists are: {sorted(common_elements)}")
 
 ## ONE LINE
 
-print(f"The common elements from both the lists are: {sorted(list(set([32, 98, 6, 38, 42, 332, 28, 432, 87, 92, 2]).intersection(set([2, 6, 328, 28, 239, 210, 2132, 92]))))}")
+print(
+    f"The common elements from both the lists are: {sorted(list(set([32, 98, 6, 38, 42, 332, 28, 432, 87, 92, 2]).intersection(set([2, 6, 328, 28, 239, 210, 2132, 92]))))}"
+)
