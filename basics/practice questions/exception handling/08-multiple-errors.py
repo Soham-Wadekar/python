@@ -9,6 +9,7 @@ def perform_division(dividend, divisor):
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
 
+
 # Example usage:
 try:
     user_dividend = float(input("Enter the dividend: "))

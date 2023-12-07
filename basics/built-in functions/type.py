@@ -3,7 +3,9 @@
 x = 1
 print(type(x))
 
+
 def func():
     pass
+
 
 print(type(func()))

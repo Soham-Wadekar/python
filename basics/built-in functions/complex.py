@@ -3,5 +3,5 @@
 real, imag = 4, 5
 complex_num = "2+3j"
 
-print(complex(real,imag))
+print(complex(real, imag))
 print(complex(complex_num))

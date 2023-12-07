@@ -1,6 +1,6 @@
 # 9. Write a program to check if all values in a dictionary are unique.
 
-dict1 = {'A': 432, 'B': 882, 'C': 329, 'D': 412, 'E': 736, 'F': 201}
+dict1 = {"A": 432, "B": 882, "C": 329, "D": 412, "E": 736, "F": 201}
 unique_vals = []
 
 for val in dict1.values():

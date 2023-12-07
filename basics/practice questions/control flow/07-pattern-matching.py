@@ -5,7 +5,7 @@ pattern = "ni"
 indices = []
 
 for i in range(len(string) - len(pattern) + 1):
-    if string[i: i+len(pattern)] == pattern:
-        indices.append(tuple(i+_ for _ in range(len(pattern))))
+    if string[i : i + len(pattern)] == pattern:
+        indices.append(tuple(i + _ for _ in range(len(pattern))))
 
 print(indices)

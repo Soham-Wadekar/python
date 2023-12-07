@@ -1,7 +1,7 @@
 # 4. Write a program to find the maximum value in a dictionary.
 
-dict1 = {'A': 10, 'B': 23, 'C': 39, 'D': 82, 'E': 2, 'F': 31}
-max_key, max_val = '', 0
+dict1 = {"A": 10, "B": 23, "C": 39, "D": 82, "E": 2, "F": 31}
+max_key, max_val = "", 0
 
 for key, val in dict1.items():
     if val > max_val:

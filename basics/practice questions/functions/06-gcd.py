@@ -1,9 +1,11 @@
 # 6. Create a function to find the greatest common divisor (GCD) of two numbers using Euclid's algorithm.
 
-def gcd(num1,num2):
+
+def gcd(num1, num2):
     while num2:
         num1, num2 = num2, num1 % num2
     return abs(num1)
+
 
 num1 = 70
 num2 = 15

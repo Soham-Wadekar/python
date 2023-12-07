@@ -1,4 +1,6 @@
-with open('intermediates/file handling/files/test.txt','r') as inp, open('intermediates/file handling/files/out.txt','w') as out:
+with open("intermediates/file handling/files/test.txt", "r") as inp, open(
+    "intermediates/file handling/files/out.txt", "w"
+) as out:
     print("Reading input file data...")
     content = inp.read()
     print("Done!")

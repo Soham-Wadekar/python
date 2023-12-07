@@ -1,6 +1,6 @@
 # open() - Opens a file and returns a stream
 
-'''
+"""
 MODES
 'r' - Open for reading (default)
 'w' - Open for writing, truncating the file first
@@ -9,12 +9,12 @@ MODES
 'b' - Binary mode
 't' - Text mode (default)
 '+' - Open for updating (reading and writing)
-'''
+"""
 
-f = open('basics/built-in functions/abs.py','r')
+f = open("basics/built-in functions/abs.py", "r")
 lines = f.readlines()
 print(lines)
 f.close()
 
-with open('basics/built-in functions/int.py','r') as f:
+with open("basics/built-in functions/int.py", "r") as f:
     print(f.readlines())
