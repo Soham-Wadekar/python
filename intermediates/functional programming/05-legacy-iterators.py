@@ -11,15 +11,16 @@ class Iter:
 
         if self.current >= self.n:
             raise StopIteration
-        
+
         return self.current
+
 
 x = Iter(5)
 
 for i in x:
     print(i)
 
-print("==="*5)
+print("===" * 5)
 
 # Need to create an iter object of x, else next(x) will not work since self.current would not be defined
 itr = iter(x)
