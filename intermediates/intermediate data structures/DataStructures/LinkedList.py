@@ -1,26 +1,30 @@
+from abc import ABC, abstractmethod
+
 class Node:
 
     """A Singular Node"""
 
-    def __init__(self, data=None, next=None):
+    def __init__(self, data=None, next=None, previous=None):
         self.data = data
         self.next = next
+        self.previous = previous
 
+class LinkedLists(ABC):
 
-class SinglyLinkedList:
-
-    """Singly Linked List"""
-
+    @abstractmethod
     def __init__(self):
         self.head = None
 
     def __add__(self, other):
         """Returns a new concatenated linked list"""
 
-        if not isinstance(other, SinglyLinkedList):
+        if not isinstance(other, (SinglyLinkedList, DoublyLinkedList)):
             raise TypeError("Unsupported operand type")
 
-        result = SinglyLinkedList()
+        if isinstance(self, SinglyLinkedList) and isinstance(other, SinglyLinkedList):
+            result = SinglyLinkedList()
+        elif isinstance(self, DoublyLinkedList) and isinstance(other, DoublyLinkedList):
+            result = DoublyLinkedList()
 
         current = self.head
         while current:
@@ -56,23 +60,7 @@ class SinglyLinkedList:
             itr = itr.next
 
         return count
-
-    def __repr__(self):
-        """Prints the linked list in a specific manner"""
-
-        llstr = ""
-        if self.head is None:
-            llstr = ""
-
-        else:
-            itr = self.head
-            while itr:
-                llstr += str(itr.data) + " ==> "
-                itr = itr.next
-
-        llstr = "(HEAD) " + llstr + "NULL"
-        return llstr
-
+    
     def delete(self, idx=-1):
         """Deletes an element from a specific index. (default = end of linked list)"""
 
@@ -192,8 +180,12 @@ class SinglyLinkedList:
     def split(self, idx):
         """Splits the linked list into two linked lists at a specified"""
 
-        left = SinglyLinkedList()
-        right = SinglyLinkedList()
+        if isinstance(self, SinglyLinkedList):
+            left = SinglyLinkedList()
+            right = SinglyLinkedList()
+        elif isinstance(self, DoublyLinkedList):
+            left = DoublyLinkedList()
+            right = DoublyLinkedList()
 
         if idx < 0 or idx > len(self):
             raise IndexError("Index out of bounds")
@@ -226,3 +218,63 @@ class SinglyLinkedList:
             raise IndexError("Index out of bounds")
 
         itr.data = val
+
+class SinglyLinkedList(LinkedLists):
+
+    """Singly Linked List"""
+
+    def __init__(self):
+        self.head = None
+
+    def __repr__(self):
+        """Prints the singly linked list in a specific manner"""
+
+        llstr = ""
+        if self.head is None:
+            llstr = "--> "
+
+        else:
+            itr = self.head
+            while itr:
+                llstr += str(itr.data) + " --> "
+                itr = itr.next
+
+        llstr = "(HEAD) " + llstr + "NULL"
+        return llstr
+    
+class DoublyLinkedList(LinkedLists):
+
+    def __init__(self):
+        self.head = None
+
+    def __repr__(self):
+        '''Prints the doubly linked list in a specific manner'''
+
+        dllstr = ""
+        if self.head is None:
+            dllstr = "<==> "
+
+        else:
+            itr = self.head
+            while itr:
+                dllstr += str(itr.data) + " <==> "
+                itr = itr.next
+        
+        dllstr = "NULL <==> (HEAD) " + dllstr + "NULL"
+        return dllstr
+    
+    def reverse(self):
+        '''Reverses a linked list'''
+
+        result = DoublyLinkedList()
+        nodes = []
+
+        itr = self.head
+        while itr:
+            nodes.append(str(itr.data))
+            itr = itr.next
+
+        nodes = list(reversed(nodes))
+        result.insert(nodes)
+
+        return result
