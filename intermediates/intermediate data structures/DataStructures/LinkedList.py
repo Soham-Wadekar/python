@@ -5,10 +5,9 @@ class Node:
 
     """A Singular Node"""
 
-    def __init__(self, data=None, next=None, previous=None):
+    def __init__(self, data=None, next=None):
         self.data = data
         self.next = next
-        self.previous = previous
 
 
 class LinkedLists(ABC):
@@ -158,6 +157,10 @@ class LinkedLists(ABC):
 
         # Inserts a single node
         elif isinstance(data, (int, str, float)):
+            
+            if self.head is None:
+                self.head = Node(data, None)
+                return
             # Inserts an node at the start
             if idx == 0:
                 node = Node(data, self.head)
@@ -165,9 +168,6 @@ class LinkedLists(ABC):
 
             # Inserts an node at the end
             elif idx == -1:
-                if self.head is None:
-                    self.head = Node(data, None)
-                    return
 
                 itr = self.head
                 while itr.next:
