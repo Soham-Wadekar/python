@@ -157,7 +157,6 @@ class LinkedLists(ABC):
 
         # Inserts a single node
         elif isinstance(data, (int, str, float)):
-            
             if self.head is None:
                 self.head = Node(data, None)
                 return
@@ -168,7 +167,6 @@ class LinkedLists(ABC):
 
             # Inserts an node at the end
             elif idx == -1:
-
                 itr = self.head
                 while itr.next:
                     itr = itr.next
