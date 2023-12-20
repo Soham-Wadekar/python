@@ -1,0 +1,90 @@
+{
+	"star": {
+	  "name": "Sun",
+	  "type": "G-type main-sequence",
+	  "diameter_km": 1392684,
+	  "mass_kg": 1.989e30
+	},
+	"planets": [
+	  {
+		"name": "Mercury",
+		"type": "Terrestrial",
+		"diameter_km": 4879,
+		"distance_from_sun_km": 57910000,
+		"moons": ["None"]
+	  },
+	  {
+		"name": "Venus",
+		"type": "Terrestrial",
+		"diameter_km": 12104,
+		"distance_from_sun_km": 108200000,
+		"moons": ["None"]
+	  },
+	  {
+		"name": "Earth",
+		"type": "Terrestrial",
+		"diameter_km": 12742,
+		"distance_from_sun_km": 149600000,
+		"moons": ["Moon"]
+	  },
+	  {
+		"name": "Mars",
+		"type": "Terrestrial",
+		"diameter_km": 6779,
+		"distance_from_sun_km": 227900000,
+		"moons": ["Phobos", "Deimos"]
+	  },
+	  {
+		"name": "Jupiter",
+		"type": "Gas Giant",
+		"diameter_km": 139820,
+		"distance_from_sun_km": 778300000,
+		"moons": ["Io", "Europa", "Ganymede", "Callisto"]
+	  },
+	  {
+		"name": "Saturn",
+		"type": "Gas Giant",
+		"diameter_km": 116460,
+		"distance_from_sun_km": 1427000000,
+		"moons": ["Titan", "Enceladus", "Mimas"]
+	  },
+	  {
+		"name": "Uranus",
+		"type": "Ice Giant",
+		"diameter_km": 50724,
+		"distance_from_sun_km": 2871000000,
+		"moons": ["Miranda", "Ariel", "Umbriel"]
+	  },
+	  {
+		"name": "Neptune",
+		"type": "Ice Giant",
+		"diameter_km": 49244,
+		"distance_from_sun_km": 4495000000,
+		"moons": ["Triton", "Proteus", "Nereid"]
+	  }
+	],
+	"dwarf_planets": [
+	  {
+		"name": "Pluto",
+		"type": "Dwarf Planet",
+		"diameter_km": 2370,
+		"distance_from_sun_km": 5906000000,
+		"moons": ["Charon", "Styx", "Nix"]
+	  },
+	  {
+		"name": "Eris",
+		"type": "Dwarf Planet",
+		"diameter_km": 2326,
+		"distance_from_sun_km": 10281000000,
+		"moons": ["Dysnomia"]
+	  },
+	  {
+		"name": "Ceres",
+		"type": "Dwarf Planet",
+		"diameter_km": 590,
+		"distance_from_sun_km": 414000000,
+		"moons": ["None"]
+	  }
+	]
+  }
+  
