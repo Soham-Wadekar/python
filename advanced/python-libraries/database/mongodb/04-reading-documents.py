@@ -9,12 +9,12 @@ animals = forest.animals
 
 # Get all the documents
 all_animals = animals.find()
-    
-for animal in all_animals:    
+
+for animal in all_animals:
     printer.pprint(animal)
 
 # Get a specific document based on the key - First document that matches the criteria
-roaring_animals = animals.find_one({"name": "Lion", "sound": "Roar"})    
+roaring_animals = animals.find_one({"name": "Lion", "sound": "Roar"})
 printer.pprint(roaring_animals)
 
 # Get counts of documents
@@ -33,12 +33,7 @@ animal = animals.find_one({"_id": _id})
 printer.pprint(animal)
 
 # Get the documents within the specific range
-query = {
-    "$and": [
-        {"weight": {"$gte": 50}},
-        {"weight": {"$lt": 1000}}
-    ]
-}
+query = {"$and": [{"weight": {"$gte": 50}}, {"weight": {"$lt": 1000}}]}
 
 animal = animals.find(query).sort("weight")
 for anim in animal:

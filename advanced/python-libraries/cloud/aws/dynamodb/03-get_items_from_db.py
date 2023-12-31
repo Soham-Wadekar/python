@@ -1,17 +1,13 @@
 import boto3
 
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource("dynamodb")
 
-table = dynamodb.Table('Books')
+table = dynamodb.Table("Books")
 
-response = table.get_item(
-    Key = {
-        "BookID": 1001
-    }
-)
+response = table.get_item(Key={"BookID": 1001})
 
-if 'Item' in response:
+if "Item" in response:
     print("Item Found!!")
-    print(response['Item'])
+    print(response["Item"])
 else:
     print("Item not found")
