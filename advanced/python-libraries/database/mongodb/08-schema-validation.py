@@ -11,29 +11,29 @@ book_validator = {
         "properties": {
             "title": {
                 "bsonType": "string",
-                "description": "must be a string and it is required"
+                "description": "must be a string and it is required",
             },
             "authors": {
                 "bsonType": "array",
                 "items": {
                     "bsonType": "objectId",
-                    "description": "must be objectId and it is required"
-                }
+                    "description": "must be objectId and it is required",
+                },
             },
             "publication_date": {
                 "bsonType": "date",
-                "description": "must be a date and it is required"
+                "description": "must be a date and it is required",
             },
             "genre": {
                 "enum": ["Fiction", "Non-Fiction"],
-                "description": "can only be one of the enum values and it is required"
+                "description": "can only be one of the enum values and it is required",
             },
             "copies_sold": {
                 "bsonType": "int",
                 "minimum": 0,
-                "description": "must be an integer greater than 0 and it is required"
+                "description": "must be an integer greater than 0 and it is required",
             },
-        }
+        },
     }
 }
 
@@ -53,13 +53,13 @@ author_validator = {
         "properties": {
             "name": {
                 "bsonType": "string",
-                "description": "must be a string and it is required"
+                "description": "must be a string and it is required",
             },
             "date_of_birth": {
                 "bsonType": "date",
-                "description": "must be a date and it is required"
+                "description": "must be a date and it is required",
             },
-        }
+        },
     }
 }
 

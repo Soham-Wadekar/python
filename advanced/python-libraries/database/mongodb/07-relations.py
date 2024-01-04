@@ -18,7 +18,7 @@ address = {
     "state": "Stateville",
     "postalCode": "12345",
     "country": "Countryland",
-  }
+}
 
 # METHOD 1 (Embedded Documents)
 _id = ObjectId("5f1c6abf7461444032a53a00")
