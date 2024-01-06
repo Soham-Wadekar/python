@@ -1,3 +1,6 @@
 *.cpython-310.pyc
 .env
 C:\git-forge\python\advanced\python-libraries\database\mongodb\config\main.py
+*.png
+*.jpeg
+*.jpg
