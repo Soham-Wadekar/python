@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 from flaskblog import db, login_manager
 from flask_login import UserMixin
 
@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    date_posted = db.Column(db.String(100), nullable=False, default='2024-10-24 10:57:03.623588+00:00')
+    date_posted = db.Column(db.String(100), nullable=False, default=str(datetime.datetime.now(datetime.timezone.utc).strftime("%d %b %Y")))
     text = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
