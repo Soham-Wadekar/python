@@ -1,6 +1,8 @@
 import datetime
 from itsdangerous import Serializer, TimestampSigner
-from flaskblog import db, app, login_manager
+
+from flask import current_app
+from flaskblog import db, login_manager
 from flask_login import UserMixin
 
 @login_manager.user_loader
@@ -16,14 +18,14 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post', backref='author', lazy=True)
 
     def get_reset_token(self):
-        s = Serializer(app.secret_key)
-        signer = TimestampSigner(app.secret_key)
+        s = Serializer(current_app.secret_key)
+        signer = TimestampSigner(current_app.secret_key)
         return signer.sign(s.dumps({'user_id': self.id})).decode('utf-8')
     
     @staticmethod
     def verify_reset_token(token, expires_in=1800):
-        s = Serializer(app.secret_key)
-        signer = TimestampSigner(app.secret_key)
+        s = Serializer(current_app.secret_key)
+        signer = TimestampSigner(current_app.secret_key)
 
         try:
             unsigned_token = signer.unsign(token.encode('utf-8'), max_age=expires_in)
