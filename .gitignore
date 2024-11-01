@@ -1,7 +1,15 @@
-*.cpython-310.pyc
+# Environments
 .env
-C:\git-forge\python\advanced\python-libraries\database\mongodb\config\main.py
+.venv
+
+# Image Formats
 *.png
 *.jpeg
 *.jpg
-.venv
+
+# Config files
+C:\git-forge\python\advanced\python-libraries\database\mongodb\config\main.py
+C:\git-forge\python\advanced\python-libraries\applications\flask\flaskblog\config.py
+
+# Cache
+*.cpython-310.pyc
