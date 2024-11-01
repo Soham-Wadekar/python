@@ -1,5 +1,6 @@
 import requests
 
+
 class Employee:
 
     raise_percent = 1.05
@@ -11,19 +12,18 @@ class Employee:
 
     @property
     def email(self):
-        return f'{self.first}.{self.last}@company.com'
-    
+        return f"{self.first}.{self.last}@company.com"
+
     @property
     def fullname(self):
-        return f'{self.first} {self.last}'
-    
+        return f"{self.first} {self.last}"
+
     def apply_raise(self):
         self.pay = int(self.pay * self.raise_percent)
 
     def monthly_schedule(self, month):
-        response = requests.get(f'http://company.com/{self.last}/{month}')
+        response = requests.get(f"http://company.com/{self.last}/{month}")
         if response.ok:
             return response.text
         else:
-            return 'Bad Response!'
-        
+            return "Bad Response!"

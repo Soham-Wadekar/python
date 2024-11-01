@@ -1,12 +1,14 @@
-'''
+"""
 Sample code to test pylint
-'''
+"""
+
 
 def add(number1, number2):
-    '''
+    """
     Sample function to add two numbers
-    '''
+    """
     return number1 + number2
+
 
 NUM1 = 4
 NUM2 = 5

@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 
 
 class Node:
-
     """A Singular Node"""
 
     def __init__(self, data=None, next=None):
@@ -416,7 +415,6 @@ class CircularLinkedList(ABC):
 
 
 class SinglyLinkedList(LinkedLists):
-
     """Singly Linked List"""
 
     def __init__(self):
@@ -440,7 +438,6 @@ class SinglyLinkedList(LinkedLists):
 
 
 class DoublyLinkedList(LinkedLists):
-
     """Doubly Linked List"""
 
     def __init__(self):
@@ -480,7 +477,6 @@ class DoublyLinkedList(LinkedLists):
 
 
 class CircularSinglyLinkedList(CircularLinkedList):
-
     """Circular Singly Linked List"""
 
     def __init__(self):
@@ -508,7 +504,6 @@ class CircularSinglyLinkedList(CircularLinkedList):
 
 
 class CircularDoublyLinkedList(CircularLinkedList):
-
     """Circular Doubly Linked List"""
 
     def __init__(self):
