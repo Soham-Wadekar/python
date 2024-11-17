@@ -1,9 +1,10 @@
 def mean(numbers):
-    '''Calculations the arithmetic mean of the numbers'''
+    """Calculations the arithmetic mean of the numbers"""
     return sum(numbers) / len(numbers)
 
+
 def median(numbers):
-    '''Calculations the median of the numbers'''
+    """Calculations the median of the numbers"""
     sorted_nums = sorted(numbers)
 
     if len(numbers) % 2 == 0:

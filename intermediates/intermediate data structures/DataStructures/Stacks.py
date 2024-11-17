@@ -1,5 +1,4 @@
 class DynamicStack:
-
     """Dynamic Stack"""
 
     def __init__(self):

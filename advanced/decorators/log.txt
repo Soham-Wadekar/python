@@ -1,0 +1,8 @@
+[2024-11-17 22:58:01.519664] Executed function: 'display_info' with arguments: ('Soham', 21) and kwargs: {}
+[2024-11-17 22:58:01.520159] Executed function: 'display' with arguments: ('John', 54) and kwargs: {'person': True, 'height': 172}
+[2024-11-17 22:59:02.793051] Executed function: 'display_info' with arguments: ('Soham', 21) and kwargs: {}
+[2024-11-17 22:59:02.793522] Executed function: 'display' with arguments: ('John', 54) and kwargs: {'person': True, 'height': 172}
+[2024-11-17 23:20:36.067441] Executed function: 'display_info' with arguments: ('Soham', 21) and kwargs: {}
+[2024-11-17 23:20:36.068446] Executed function: 'display' with arguments: ('John', 54) and kwargs: {'person': True, 'height': 172}
+[2024-11-17 23:20:40.012162] Executed function: 'display_info' with arguments: ('Soham', 21) and kwargs: {}
+[2024-11-17 23:20:40.013138] Executed function: 'display' with arguments: ('John', 54) and kwargs: {'person': True, 'height': 172}
