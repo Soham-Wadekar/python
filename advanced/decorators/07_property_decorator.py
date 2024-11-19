@@ -1,5 +1,5 @@
 '''
-
+`property` decorator adds the functionality of a getter, setter and deleter to a function and allows the object to treat the function like an attribute
 '''
 
 class Employee:
