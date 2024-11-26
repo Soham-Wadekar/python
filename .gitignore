@@ -2,10 +2,11 @@
 .env
 .venv
 
-# Image Formats
+# Image and Video Formats
 *.png
 *.jpeg
 *.jpg
+*.mp4
 
 # Config files
 C:\git-forge\python\advanced\python-libraries\database\mongodb\config\main.py
