@@ -14,3 +14,4 @@ C:\git-forge\python\advanced\python-libraries\applications\flask\flaskblog\confi
 
 # Cache
 *.cpython-310.pyc
+*\__pycache__
