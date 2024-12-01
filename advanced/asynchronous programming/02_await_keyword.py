@@ -1,16 +1,18 @@
 import asyncio
 import time
 
+
 async def fetch_data(delay, id):
-    '''A coroutine that simulates a time consuming task'''
+    """A coroutine that simulates a time consuming task"""
 
     print(f"Fetching data for {id}...")
-    await asyncio.sleep(delay)          # Simulating an IO operation with a sleep delay
-    print(f'Data fetched for {id}!')
+    await asyncio.sleep(delay)  # Simulating an IO operation with a sleep delay
+    print(f"Data fetched for {id}!")
     return {"data": "test", "id": id}
 
+
 async def main():
-    '''A coroutine that calls the above coroutine'''
+    """A coroutine that calls the above coroutine"""
 
     print("Start of main coroutine")
     task_1 = fetch_data(3, 1)
@@ -24,6 +26,7 @@ async def main():
     print(f"Received result: {result_2}")
 
     print("End of main coroutine")
+
 
 start = time.time()
 asyncio.run(main())
