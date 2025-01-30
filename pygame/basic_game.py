@@ -1,80 +1,73 @@
 import pygame
+from pygame import display
 from pygame.time import Clock
 from utils.animations import *
-from utils.colors import red
+from utils.colors import green, black
+from utils.objects import Enemy, Player, Projectile
+from utils.sounds import *
 
 pygame.init()
 
-window = pygame.display.set_mode((500, 500))
-pygame.display.set_caption("Basic Game")
+window = display.set_mode((500, 500))
+display.set_caption("Basic Game")
 
 clock = Clock()
+music.play(-1)
 
-class Player():
-    def __init__(self, x, y, width, height):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height 
-        self.velocity = 5
-        self.is_jump = False
-        self.jump_count = 10
-        self.left = False
-        self.right = False
-        self.walk_count = 0
-        self.standing = True
-
-    def draw(self, window):
-        if self.walk_count + 1 >= 27:
-            self.walk_count = 0
-
-        if not self.standing:
-            if self.left:
-                window.blit(walk_left[self.walk_count//3], (self.x, self.y))
-                self.walk_count += 1
-            elif self.right:
-                window.blit(walk_right[self.walk_count//3], (self.x, self.y))
-                self.walk_count += 1
-        else:
-            if self.left:
-                window.blit(walk_left[0], (self.x, self.y))
-            else:
-                window.blit(walk_right[0], (self.x, self.y))
-
-class Projectile():
-    def __init__(self, x, y, radius, color, facing):
-        self.x = x
-        self.y = y
-        self.radius = radius
-        self.color = color
-        self.facing = facing
-        self.velocity = 10 * facing
-    
-    def draw(self, window):
-        pygame.draw.circle(window, self.color, (self.x, self.y), self.radius)
+score = 0
 
 def redraw_game_window():
     window.blit(bg, (0, 0))
+
+    text = font.render(f"Score: {score}", 1, black)
+    window.blit(text, (400, 20))
+
     player.draw(window)
 
     for bullet in bullets:
         bullet.draw(window)
 
-    pygame.display.update()
+    goblin.draw(window)
+
+    display.update()
 
 # Main loop
+font = pygame.font.SysFont('comicsans', size=20, bold=True)
+
 player = Player(300, 410, 64, 64)
+goblin = Enemy(100, 415, 64, 64, 450)
+shoot_loop = 0
 bullets = []
 
 run = True
 while run:
     clock.tick(27)
 
+    if goblin.visible:
+        if player.hitbox[1] < goblin.hitbox[1] + goblin.hitbox[3] and player.hitbox[1] + player.hitbox[3] > goblin.hitbox[1]:
+            if player.hitbox[0] + player.hitbox[2] > goblin.hitbox[0] and player.hitbox[0] < goblin.hitbox[0] + goblin.hitbox[2]:
+                hit_sound.play()
+                player.hit(window)
+                score -= 2
+
+    if shoot_loop > 0:
+        shoot_loop += 1
+    if shoot_loop > 10:
+        shoot_loop = 0
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
 
     for bullet in bullets:
+        if goblin.visible:
+            if bullet.y - bullet.radius < goblin.hitbox[1] + goblin.hitbox[3] and bullet.y + bullet.radius > goblin.hitbox[1]:
+                if bullet.x + bullet.radius > goblin.hitbox[0] and bullet.x - bullet.radius < goblin.hitbox[0] + goblin.hitbox[2]:
+                    hit_sound.play()
+                    goblin.hit()
+                    score += 1
+                    bullets.pop(bullets.index(bullet))
+
         if bullet.x < 500 and bullet.x > 0:
             bullet.x += bullet.velocity
         else:
@@ -82,14 +75,17 @@ while run:
 
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_SPACE]:
+    if keys[pygame.K_SPACE] and shoot_loop == 0:
+        bullet_sound.play()
         if player.left:
             facing = -1
         else:
             facing = 1
         
         if len(bullets) < 5:
-            bullets.append(Projectile(round(player.x + player.width // 2), round(player.y + player.height // 2), 5, red, facing))
+            bullets.append(Projectile(round(player.x + player.width // 2), round(player.y + player.height // 2), 5, green, facing))
+
+        shoot_loop = 1
 
     if keys[pygame.K_LEFT] and player.x > player.velocity:
         player.x -= player.velocity
