@@ -2,10 +2,11 @@
 .env
 .venv
 
-# Image and Video Formats
+# Audio, Image and Video Formats
 *.png
 *.jpeg
 *.jpg
+*.mp3
 *.mp4
 
 # Config files
