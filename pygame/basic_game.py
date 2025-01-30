@@ -36,27 +36,28 @@ class Player():
         self.height = height 
         self.velocity = 5
         self.is_jump = False
-        self.jump_count = 7
+        self.jump_count = 10
         self.left = False
         self.right = False
         self.walk_count = 0
 
+    def draw(self, window):
+        if self.walk_count + 1 >= 27:
+            self.walk_count = 0
+        
+        if self.left:
+            window.blit(walkLeft[self.walk_count//3], (self.x, self.y))
+            self.walk_count += 1
+        elif self.right:
+            window.blit(walkRight[self.walk_count//3], (self.x, self.y))
+            self.walk_count += 1
+        else:
+            window.blit(char, (self.x, self.y))
+
 def redraw_game_window():
     # global hero.walk_count
     window.blit(bg, (0, 0))
-    
-    if hero.walk_count + 1 >= 27:
-        hero.walk_count = 0
-    
-    if hero.left:
-        window.blit(walkLeft[hero.walk_count//3], (hero.x, hero.y))
-        hero.walk_count += 1
-    elif hero.right:
-        window.blit(walkRight[hero.walk_count//3], (hero.x, hero.y))
-        hero.walk_count += 1
-    else:
-        window.blit(char, (hero.x, hero.y))
-
+    hero.draw(window)
     pygame.display.update()
 
 # Main loop
@@ -88,7 +89,7 @@ while run:
             hero.left, right = False, False
             hero.walk_count = 0
     else:
-        if hero.jump_count >= -7:
+        if hero.jump_count >= -10:
             sign = 1
             if hero.jump_count < 0:
                 sign = -1
@@ -96,7 +97,7 @@ while run:
             hero.jump_count -= 1
         else:
             hero.is_jump = False
-            hero.jump_count = 7
+            hero.jump_count = 10
 
     redraw_game_window()
 
