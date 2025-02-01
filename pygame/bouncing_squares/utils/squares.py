@@ -1,6 +1,8 @@
 from pygame.draw import rect
 from pygame import mixer
 
+from utils.colors import pink
+
 mixer.init()
 
 class Square:
@@ -31,6 +33,9 @@ class Square:
             hit_sound = mixer.Sound("effects/wall_hit.wav")
             hit_sound.play()
             self.y_velocity *= -1
+
+        if self.health <= 0:
+            hit_sound.stop()
 
     def collide(self, other):
         if self.visible and other.visible and (
@@ -88,3 +93,16 @@ class Square:
         elif self.y + self.side > window.get_height():
             self.y = window.get_height() - self.side
             self.y_velocity = -abs(self.y_velocity)
+
+class HealthPowerUp:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.side = 20
+        self.color = pink
+        self.visible = True
+
+    def draw(self, window):
+        border = [max(0, int(c * 0.7)) for c in self.color]
+        rect(window, border, (self.x, self.y, self.side, self.side))
+        rect(window, self.color, (self.x + 4, self.y + 4, self.side - 8, self.side - 8))
