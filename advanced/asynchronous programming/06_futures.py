@@ -1,14 +1,16 @@
-'''
+"""
 A future is the promise of a yet-to-occur result
-'''
+"""
 
 import asyncio
+
 
 async def set_future_result(future, value):
     await asyncio.sleep(2)
     # Set the result of the future
     future.set_result(value)
     print(f"Set the future's result to {value}")
+
 
 async def main():
 
@@ -22,5 +24,6 @@ async def main():
     # Wait for the future's result
     result = await future
     print(f"Received the future's result: {result}")
+
 
 asyncio.run(main())

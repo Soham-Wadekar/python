@@ -1,13 +1,15 @@
 import asyncio
 import time
 
+
 async def fetch_data(id, sleep_time):
     print(f"Coroutine {id} is fetching the data...")
     await asyncio.sleep(sleep_time)
     return {"id": id, "data": f"Sample data from coroutine {id}"}
 
+
 async def main():
-    '''Tasks allows coroutines to run concurrently'''
+    """Tasks allows coroutines to run concurrently"""
 
     task1 = asyncio.create_task(fetch_data(1, 3))
     task2 = asyncio.create_task(fetch_data(2, 1))
@@ -24,6 +26,7 @@ async def main():
     print(result2)
     print(result3)
     print(result4)
+
 
 start = time.time()
 asyncio.run(main())

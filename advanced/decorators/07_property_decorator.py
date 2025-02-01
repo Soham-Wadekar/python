@@ -1,6 +1,7 @@
-'''
+"""
 `property` decorator adds the functionality of a getter, setter and deleter to a function and allows the object to treat the function like an attribute
-'''
+"""
+
 
 class Employee:
 
@@ -15,10 +16,10 @@ class Employee:
     @property
     def fullname(self):
         return f"{self.first} {self.last}"
-    
+
     @fullname.setter
     def fullname(self, fullname):
-        first, last = fullname.split(' ')
+        first, last = fullname.split(" ")
         self.first = first
         self.last = last
 
@@ -26,7 +27,8 @@ class Employee:
     def fullname(self):
         print(f"Deleting {self.fullname}")
         self.first, self.last = None, None
-    
+
+
 emp_1 = Employee("Dwight", "Schrute")
 
 print(emp_1.first)
