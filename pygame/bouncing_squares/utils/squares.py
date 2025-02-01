@@ -1,4 +1,7 @@
 from pygame.draw import rect
+from pygame import mixer
+
+mixer.init()
 
 class Square:
     def __init__(self, x, y, side, color):
@@ -6,8 +9,9 @@ class Square:
         self.y = y
         self.side = side
         self.color = color
-        self.x_velocity = 10
-        self.y_velocity = 10
+        self.x_velocity = 15
+        self.y_velocity = 15
+        self.health = 100
         self.visible = True
 
     def draw(self, window):
@@ -20,19 +24,28 @@ class Square:
         self.y += self.y_velocity
 
         if self.x <= 10 or self.x + self.side >= window.get_width() - 10:
+            hit_sound = mixer.Sound("effects/wall_hit.wav")
+            hit_sound.play()
             self.x_velocity *= -1
         if self.y <= 20 or self.y + self.side >= window.get_height() - 90:
+            hit_sound = mixer.Sound("effects/wall_hit.wav")
+            hit_sound.play()
             self.y_velocity *= -1
 
-    def collide(self, other, window):
+    def collide(self, other):
         if self.visible and other.visible and (
             self.x < other.x + other.side and
             self.x + self.side > other.x and
             self.y < other.y + other.side and
             self.y + self.side > other.y
         ):
-            self.side -= 10
-            other.side -= 10
+            self.side = max(40, self.side - 6)
+            other.side = max(40, other.side - 6)
+            self.health = max(0, self.health - 10)
+            other.health = max(0, other.health - 10)
+
+            hit_sound = mixer.Sound("effects/hit.wav")
+            hit_sound.play()
 
             overlap_x = min(self.x + self.side - other.x, other.x + other.side - self.x)
             overlap_y = min(self.y + self.side - other.y, other.y + other.side - self.y)
@@ -54,10 +67,10 @@ class Square:
                 else:
                     self.y += overlap_y
 
-            if self.side <= 20:
+            if self.health <= 0:
                 self.visible = False
                 self.side = 0
-            if other.side <= 20:
+            if other.health <= 0:
                 other.visible = False
                 other.side = 0
 
