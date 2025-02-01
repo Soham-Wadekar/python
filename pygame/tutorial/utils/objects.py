@@ -2,7 +2,7 @@ import pygame
 from pygame.font import SysFont
 from pygame.draw import rect, circle
 from utils.animations import *
-from utils.colors import red, green, black
+from utils.colors import red, black
 
 class Player:
     def __init__(self, x, y, width, height):
