@@ -40,6 +40,12 @@ while run:
     y = (y - velocity if keys[pygame.K_UP] else y + velocity if keys[pygame.K_DOWN] else y) % window.get_height()
 
     height, width = ((height * scale, width * scale) if keys[pygame.K_w] else (height / scale, width / scale) if keys[pygame.K_s] else (height, width))
+    
+    if keys[pygame.K_a]:
+        velocity *= 2
+
+    if keys[pygame.K_d]:
+        velocity /= 2    
 
     if keys[pygame.K_q]:
         color = random.choice(list(colors.keys()))
