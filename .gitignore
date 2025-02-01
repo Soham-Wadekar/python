@@ -8,6 +8,7 @@
 *.jpg
 *.mp3
 *.mp4
+*.wav
 
 # Config files
 C:\git-forge\python\advanced\python-libraries\database\mongodb\config\main.py
