@@ -1,7 +1,7 @@
 from pygame.draw import rect
 from pygame import mixer
 
-from utils.colors import pink
+from utils.colors import pink, dark_red
 
 mixer.init()
 
@@ -13,7 +13,8 @@ class Square:
         self.color = color
         self.x_velocity = 15
         self.y_velocity = 15
-        self.health = 100
+        self.health = 200
+        self.damage = 10
         self.visible = True
         self.end = False
 
@@ -48,8 +49,8 @@ class Square:
         ):
             self.side = max(40, self.side - 6)
             other.side = max(40, other.side - 6)
-            self.health = max(0, self.health - 10)
-            other.health = max(0, other.health - 10)
+            self.health = max(0, self.health - self.damage)
+            other.health = max(0, other.health - other.damage)
 
             hit_sound = mixer.Sound("effects/hit.wav")
             hit_sound.play()
@@ -98,15 +99,18 @@ class Square:
             self.y = window.get_height() - self.side
             self.y_velocity = -abs(self.y_velocity)
 
-class HealthPowerUp:
-    def __init__(self, x, y):
+class Powerup:
+    def __init__(self, x, y, type):
         self.x = x
         self.y = y
+        self.type = type
         self.side = 20
-        self.color = pink
         self.visible = True
 
     def draw(self, window):
-        border = [max(0, int(c * 0.7)) for c in self.color]
+        match self.type:
+            case 'heal': color = pink
+            case 'damage': color = dark_red
+        border = [max(0, int(c * 0.7)) for c in color]
         rect(window, border, (self.x, self.y, self.side, self.side))
-        rect(window, self.color, (self.x + 4, self.y + 4, self.side - 8, self.side - 8))
+        rect(window, color, (self.x + 4, self.y + 4, self.side - 8, self.side - 8))
