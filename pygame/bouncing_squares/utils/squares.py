@@ -15,6 +15,7 @@ class Square:
         self.y_velocity = 15
         self.health = 100
         self.visible = True
+        self.end = False
 
     def draw(self, window):
         border = [max(0, int(c * 0.7)) for c in self.color]
@@ -22,20 +23,21 @@ class Square:
         rect(window, self.color, (self.x + 10, self.y + 10, self.side - 20, self.side - 20))
 
     def move(self, window):
-        self.x += self.x_velocity
-        self.y += self.y_velocity
+        if not self.end:
+            self.x += self.x_velocity
+            self.y += self.y_velocity
 
-        if self.x <= 10 or self.x + self.side >= window.get_width() - 10:
-            hit_sound = mixer.Sound("effects/wall_hit.wav")
-            hit_sound.play()
-            self.x_velocity *= -1
-        if self.y <= 20 or self.y + self.side >= window.get_height() - 90:
-            hit_sound = mixer.Sound("effects/wall_hit.wav")
-            hit_sound.play()
-            self.y_velocity *= -1
+            if self.x <= 10 or self.x + self.side >= window.get_width() - 10:
+                hit_sound = mixer.Sound("effects/wall_hit.wav")
+                hit_sound.play()
+                self.x_velocity *= -1
+            if self.y <= 20 or self.y + self.side >= window.get_height() - 90:
+                hit_sound = mixer.Sound("effects/wall_hit.wav")
+                hit_sound.play()
+                self.y_velocity *= -1
 
-        if self.health <= 0:
-            hit_sound.stop()
+            if self.health <= 0:
+                hit_sound.stop()
 
     def collide(self, other):
         if self.visible and other.visible and (
@@ -72,12 +74,14 @@ class Square:
                 else:
                     self.y += overlap_y
 
-            if self.health <= 0:
+            if self.side <= 40:
                 self.visible = False
                 self.side = 0
-            if other.health <= 0:
+                other.end = True
+            if other.side <= 40:
                 other.visible = False
                 other.side = 0
+                self.end = True
 
     def ensure_in_bounds(self, window):
         if self.x < 0:

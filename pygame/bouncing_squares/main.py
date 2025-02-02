@@ -20,24 +20,23 @@ SPAWN_HP = pygame.USEREVENT + 1
 pygame.time.set_timer(SPAWN_HP, random.randint(3000, 6000))
 
 def draw_window():
-    if not game_end:
-        window.fill(black)
+    window.fill(black)
 
-        rect(window, white, (0, 10, 500, 510), width=5)
+    rect(window, white, (0, 10, 500, 510), width=5)
 
-        square_1.draw(window)
-        square_2.draw(window)
+    square_1.draw(window)
+    square_2.draw(window)
 
-        for hp in health_powerups:
-            hp.draw(window)
+    for hp in health_powerups:
+        hp.draw(window)
 
-        text_1 = font.render(f"Red: {square_1.health}", 1, red)
-        text_2 = font.render(f"Cyan: {square_2.health}", 1, cyan)
+    text_1 = font.render(f"Red: {square_1.health}", 1, red)
+    text_2 = font.render(f"Cyan: {square_2.health}", 1, cyan)
 
-        window.blit(text_1, (10, 520))
-        window.blit(text_2, (10, 550))
+    window.blit(text_1, (10, 520))
+    window.blit(text_2, (10, 550))
 
-        pygame.display.update()
+    pygame.display.update()
 
 square_1 = Square(random.randint(20, 380), random.randint(30, 90), 100, red)
 square_2 = Square(random.randint(20, 380), random.randint(290, 380), 100, cyan)
@@ -47,7 +46,6 @@ health_powerups = []
 font = SysFont('comicsans', size=20, bold=True)
 
 run = True
-game_end = False
 win_sound_played = False
 
 while run:
@@ -58,7 +56,7 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-        if event.type == SPAWN_HP and len(health_powerups) < 3 and not game_end:
+        if event.type == SPAWN_HP and len(health_powerups) < 3:
             health_powerups.append(HealthPowerUp(random.randint(20, 480), random.randint(20, 480)))
             pygame.time.set_timer(SPAWN_HP, random.randint(3000, 6000))
 
@@ -90,27 +88,15 @@ while run:
                 square_2.side = min(100, square_2.side + 6)
                 health_powerups.remove(powerup)
     
-    if not square_1.visible or not square_2.visible:
-        if not win_sound_played:
-            win_sound = mixer.Sound('effects/win.wav')
-            win_sound.play()
-            win_sound_played = True
-        
-        game_end = True
-        health_powerups.clear()
-        pygame.display.update()
-
-    if game_end:
-        if square_1.visible:
-            win_color = square_1.color
-            rect(window, win_color, (0, 10, 500, 510))
+        if square_1.end:      
+            square_1.side = 300
+            square_1.x = window.get_width() // 2 - square_1.side // 2
+            square_1.y = window.get_height() // 2 - square_1.side // 2 - 50
             pygame.display.update()
-        elif square_2.visible:
-            win_color = square_2.color
-            rect(window, win_color, (0, 10, 500, 510))
-            pygame.display.update()
-        else:
-            rect(window, white, (0, 10, 500, 510), width=10)
+        elif square_2.end:      
+            square_2.side = 300
+            square_2.x = window.get_width() // 2 - square_2.side // 2
+            square_2.y = window.get_height() // 2 - square_2.side // 2 - 50
             pygame.display.update()
         
     else:         
