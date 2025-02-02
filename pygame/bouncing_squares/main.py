@@ -65,6 +65,21 @@ while run:
     if square_2.visible:
         square_2.move(window)
 
+    if square_1.end or square_2.end:
+            health_powerups.clear()
+            if square_1.end:
+                square_1.x = window.get_width() // 2 - square_1.side // 2
+                square_1.y = window.get_height() // 2 - square_1.side // 2 - 35
+                while square_1.side <= 475:      
+                    square_1.side += 20
+                pygame.display.update()
+            elif square_2.end:      
+                square_2.x = window.get_width() // 2 - square_2.side // 2
+                square_2.y = window.get_height() // 2 - square_2.side // 2 - 35
+                while square_2.side <= 475:      
+                    square_2.side += 20
+                pygame.display.update()
+
     square_1.collide(square_2)
 
     for powerup in health_powerups[:]:
@@ -87,17 +102,6 @@ while run:
                 square_2.health = min(100, square_2.health + 10)
                 square_2.side = min(100, square_2.side + 6)
                 health_powerups.remove(powerup)
-    
-        if square_1.end:      
-            square_1.side = 300
-            square_1.x = window.get_width() // 2 - square_1.side // 2
-            square_1.y = window.get_height() // 2 - square_1.side // 2 - 50
-            pygame.display.update()
-        elif square_2.end:      
-            square_2.side = 300
-            square_2.x = window.get_width() // 2 - square_2.side // 2
-            square_2.y = window.get_height() // 2 - square_2.side // 2 - 50
-            pygame.display.update()
         
     else:         
         draw_window()
